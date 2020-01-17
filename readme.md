@@ -1,4 +1,4 @@
-#svelte-styled-system
+# svelte-styled-system
 
 **Attention!** POC only!
 
