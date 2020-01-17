@@ -1,0 +1,39 @@
+{
+  "name": "svelte-styled-system",
+  "version": "0.0.1",
+  "description": "POC: using the idea of styled-system with svelte",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "browser": "dist/index.bundle.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "author": "Manu Schiller <hello@manuschiller.dev>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,ts}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "dlv": "^1.1.3",
+    "goober": "^1.6.3"
+  },
+  "devDependencies": {
+    "husky": "^4.0.10",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "rollup": "^1.29.0",
+    "rollup-plugin-terser": "^5.2.0"
+  }
+}
