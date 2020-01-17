@@ -10,6 +10,7 @@
     "README.md"
   ],
   "author": "Manu Schiller <hello@manuschiller.dev>",
+  "repository": "manuschillerdev/svelte-styled-system",
   "license": "MIT",
   "scripts": {
     "build": "rollup -c"
@@ -20,7 +21,7 @@
     }
   },
   "lint-staged": {
-    "**/*.{js,ts}": [
+    "**/*.{js,ts,json,md}": [
       "prettier --write",
       "git add"
     ]
