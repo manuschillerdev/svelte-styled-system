@@ -1,4 +1,6 @@
-# svelte-styled-system
+# svelte-styled-system in less than 1kb
+
+[https://bundlephobia.com/result?p=svelte-styled-system@0.0.1](https://bundlephobia.com/result?p=svelte-styled-system@0.0.1)
 
 **Attention!** POC only!
 
