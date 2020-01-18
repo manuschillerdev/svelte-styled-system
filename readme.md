@@ -1,6 +1,4 @@
-# svelte-styled-system in less than 1kb
-
-[https://bundlephobia.com/result?p=svelte-styled-system@0.0.1](https://bundlephobia.com/result?p=svelte-styled-system@0.0.1)
+# using styled-system with svelte in ~1kb
 
 **Attention!** POC only!
 
@@ -11,9 +9,18 @@ May change / be abondend any time.
 
 Demo: [https://codesandbox.io/s/condescending-davinci-bhoif](https://codesandbox.io/s/condescending-davinci-bhoif)
 
-# Using styled-system with svelte
+### Examples (with REPLs):
 
-## Defining your theme:
+- [Hello World](docs/examples/01_hello_world.md)
+- [Responsive values](docs/examples/02_responsive.md)
+- [Change styles based on current scope variables](docs/examples/03_reactivity.md)
+- [Change styles based on theme changes](docs/examples/04_theme_changes.md)
+- [Working with pseudo elements / pesudo classes](docs/examples/05_css_in_js.md)
+- [Separate styles to their own files](docs/examples/06_separate_styles.md)
+
+## Using styled-system with svelte
+
+### Defining your theme:
 
 The theme definition is nothing more than a plain JS-Object wrapped in a writable store, that should contain an attribute `breakpoints: string[]` at the top level as a minimum config if you want to use responsive attributes.
 
@@ -41,7 +48,7 @@ export const theme = writable({
 });
 ```
 
-## Using your theme
+### Using your theme
 
 Using your theme is pretty straight forward, too. `styled` from `svelte-styled-system` is a regular [svelte action](https://svelte.dev/docs#use_action) so you can use it with `use:styled`. It expects an array in the form `[$$props, $theme]` note the `$` sign in front of your imported theme to ([automatically subscribe / unsubscribe to changes automatically!](https://svelte.dev/docs#4_Prefix_stores_with_$_to_access_their_values))
 
@@ -75,7 +82,7 @@ That's all! Your are ready to use all css property names + [shorthand](#currentl
 </Box>
 ```
 
-## How does the value resolution work?
+### How does the value resolution work?
 
 1. The attribute name will get mapped to the css property name. You can specify it either in camelCase `(textAlign)` or kebab-case `(text-align)`.
    So, if you know css by heart, you already know 99% of your component's props.

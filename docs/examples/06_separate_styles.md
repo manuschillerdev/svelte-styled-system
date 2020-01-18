@@ -1,4 +1,4 @@
-# Example 06 - separate style definitions from component logic
+# Example 06 - Separate styles to their own files
 
 **TLDR:** [https://codesandbox.io/s/holy-cache-7p6y9](https://codesandbox.io/s/holy-cache-7p6y9)
 
