@@ -54,6 +54,7 @@ export function styled(node, props) {
 
   function update([attributes, theme]) {
     if (attributesEq(attributes, prevAttributes)) return;
+    prevAttributes = attributes;
 
     let cssText = "";
     let mediaQueries = [];
