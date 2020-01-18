@@ -1,6 +1,6 @@
 # Example 06 - Separate styles to their own files
 
-**TLDR:** [https://codesandbox.io/s/holy-cache-7p6y9](https://codesandbox.io/s/holy-cache-7p6y9)
+**TLDR:** [https://svelte.dev/repl/4ce1bf6b28314cc8ae5a4d8c39e3078e?version=3.17.1](https://svelte.dev/repl/4ce1bf6b28314cc8ae5a4d8c39e3078e?version=3.17.1)
 
 In our example before, we created our dynamic styles right in the main `<script>` block of our component. As soon as there is some more logic going on the code can become messy very quickly. We can export the style creation to a separate file, if we want to.
 

@@ -1,6 +1,6 @@
 # Examples: Working with pseudo elements / pesudo classes
 
-**TLDR:** [https://codesandbox.io/s/fervent-hellman-rcksl](https://codesandbox.io/s/fervent-hellman-rcksl)
+**TLDR:** [https://svelte.dev/repl/0390ad4f8bf84c2dbaed404362dba3ad?version=3.17.1](https://svelte.dev/repl/0390ad4f8bf84c2dbaed404362dba3ad?version=3.17.1)
 
 We can do a lot with styling props, but they have their limits. For example: **pseudo elements** and **pseudo classes**.
 

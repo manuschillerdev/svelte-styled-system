@@ -1,10 +1,8 @@
 # Example 1 - Hello World
 
-**TLDR:** [https://codesandbox.io/s/funny-gauss-gconn](https://codesandbox.io/s/funny-gauss-gconn)
+**TLDR:** [https://svelte.dev/repl/7301387b918c44b4b134f83c933988cb?version=3.17.1](https://svelte.dev/repl/7301387b918c44b4b134f83c933988cb?version=3.17.1)
 
-Let's create our first Box!
-
-A styled `Box` that uses variables from a theme definition.
+Let's create our first `Box` that is completely styled based on our theme definition!
 
 First we start by defining some example values for our theme.
 

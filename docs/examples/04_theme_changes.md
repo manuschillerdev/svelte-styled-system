@@ -1,6 +1,6 @@
 # Example 4 - theme changes
 
-**TLDR:** [https://codesandbox.io/s/funny-satoshi-yo9uz](https://codesandbox.io/s/funny-satoshi-yo9uz)
+**TLDR:** [https://svelte.dev/repl/07480ccc08b841048202365140582074?version=3.17.1](https://svelte.dev/repl/07480ccc08b841048202365140582074?version=3.17.1)
 
 Our component not only reacts to local variable changes, you can also change theme values during runtime and see all changes taking effect immediately.
 
