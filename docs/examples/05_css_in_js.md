@@ -1,4 +1,4 @@
-# Examples: Advanced CSS
+# Examples: Working with pseudo elements / pesudo classes
 
 **TLDR:** [https://codesandbox.io/s/fervent-hellman-rcksl](https://codesandbox.io/s/fervent-hellman-rcksl)
 
