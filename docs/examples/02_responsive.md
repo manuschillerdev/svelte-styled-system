@@ -1,6 +1,6 @@
 # Examples 2 - Responsive values
 
-**TLDR:** [[https://codesandbox.io/s/laughing-villani-iicjthttps://codesandbox.io/s/laughing-villani-iicjtNow](https://codesandbox.io/s/laughing-villani-iicjthttps://codesandbox.io/s/laughing-villani-iicjtNow)
+**TLDR:** [https://svelte.dev/repl/4601e261b1ec446ebe6f3a595f86fb12?version=3.17.1](https://svelte.dev/repl/4601e261b1ec446ebe6f3a595f86fb12?version=3.17.1)
 
 we want our `Box` to change its padding based on the current viewport.
 

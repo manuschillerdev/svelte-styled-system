@@ -1,6 +1,6 @@
 # Examples 3 - change styles based on current scope variables
 
-**TLDR:** [https://codesandbox.io/s/mystifying-mountain-pukty](https://codesandbox.io/s/mystifying-mountain-pukty)
+**TLDR:** [https://svelte.dev/repl/32e3b049aa884df68b286f9fc5a4873e?version=3.17.1](https://svelte.dev/repl/32e3b049aa884df68b286f9fc5a4873e?version=3.17.1)
 
 What if we want our `Box` to change its styling based on variables in the current scope?
 
