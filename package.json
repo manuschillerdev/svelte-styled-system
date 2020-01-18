@@ -16,7 +16,8 @@
   "sideEffects": false,
   "scripts": {
     "build": "microbundle",
-    "bundlesize": "bundlesize"
+    "bundlesize": "bundlesize",
+    "test": "node -r esm src/test.js"
   },
   "bundlesize": [
     {
@@ -41,6 +42,7 @@
   },
   "devDependencies": {
     "bundlesize": "^0.18.0",
+    "esm": "^3.2.25",
     "husky": "^4.0.10",
     "lint-staged": "^9.5.0",
     "microbundle": "^0.11.0",
