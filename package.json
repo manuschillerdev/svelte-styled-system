@@ -2,9 +2,10 @@
   "name": "svelte-styled-system",
   "version": "0.0.2",
   "description": "POC: using the idea of styled-system with svelte",
+  "source": "src/index.js",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
-  "browser": "dist/index.bundle.js",
+  "umd:main": "dist/index.umd.js",
   "files": [
     "dist",
     "README.md"
@@ -14,8 +15,15 @@
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
-    "build": "rollup -c"
+    "build": "microbundle",
+    "bundlesize": "bundlesize"
   },
+  "bundlesize": [
+    {
+      "path": "./dist/index.js",
+      "maxSize": "1 Kb"
+    }
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -32,11 +40,10 @@
     "goober": "^1.6.3"
   },
   "devDependencies": {
+    "bundlesize": "^0.18.0",
     "husky": "^4.0.10",
     "lint-staged": "^9.5.0",
-    "prettier": "^1.19.1",
-    "rollup": "^1.29.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^5.2.0"
+    "microbundle": "^0.11.0",
+    "prettier": "^1.19.1"
   }
 }
