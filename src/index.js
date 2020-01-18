@@ -78,9 +78,10 @@ export function styled(node, props) {
     }
 
     // add media queries per breakpoint
-    for (let i = 1; i < theme.breakpoints.length; i++) {
+    const { breakpoints = [] } = theme;
+    for (let i = 0; i < breakpoints.length; i++) {
       if (mediaQueries[i]) {
-        cssText += `\n@media (min-width: ${theme.breakpoints[i]}) {${mediaQueries[i]}}`;
+        cssText += `\n@media (min-width: ${breakpoints[i]}) {${mediaQueries[i]}}`;
       }
     }
 
