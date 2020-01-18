@@ -1,5 +1,6 @@
 import pkg from "./package.json";
 import { terser } from "rollup-plugin-terser";
+import resolve from "rollup-plugin-node-resolve";
 
 export default {
   input: "src/index.js", // our source file
@@ -20,6 +21,7 @@ export default {
   ],
   external: [...Object.keys(pkg.dependencies || {})],
   plugins: [
-    terser() // minifies generated bundles
+    terser(), // minifies generated bundles
+    resolve()
   ]
 };
