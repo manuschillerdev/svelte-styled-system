@@ -7,7 +7,7 @@ POC for bringing the principles of [https://styled-system.com/](https://styled-s
 This is for demo purposes only and not meant to be used yet!
 May change / be abondend any time.
 
-Demo: [https://codesandbox.io/s/condescending-davinci-bhoif](https://codesandbox.io/s/condescending-davinci-bhoif)
+Demo: [https://svelte.dev/repl/fd2a1151c14c4c2685ee55f661665204?version=3.17.1](https://svelte.dev/repl/fd2a1151c14c4c2685ee55f661665204?version=3.17.1)
 
 ### Examples (with REPLs):
 
