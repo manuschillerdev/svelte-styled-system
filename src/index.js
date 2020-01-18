@@ -28,6 +28,7 @@ const t = "top";
 const r = "right";
 const b = "bottom";
 const l = "left";
+
 export const shortHandAttributes = new Map([
   ["m", [m]],
   ["mt", [`${m}-${t}`]],
@@ -99,3 +100,5 @@ export function styled(node, props) {
 
   return { update };
 }
+
+export default styled;
