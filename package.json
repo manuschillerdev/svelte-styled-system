@@ -1,7 +1,7 @@
 {
   "name": "svelte-styled-system",
-  "version": "0.0.31",
-  "description": "POC: using the idea of styled-system with svelte",
+  "version": "0.0.4",
+  "description": "Using the idea of styled-system with svelte",
   "source": "src/index.js",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -22,7 +22,7 @@
   "bundlesize": [
     {
       "path": "./dist/index.js",
-      "maxSize": "1 Kb"
+      "maxSize": "1.5 Kb"
     }
   ],
   "husky": {
