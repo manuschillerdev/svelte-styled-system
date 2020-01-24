@@ -1,25 +1,23 @@
-name: Node CI
+name: CI
 
 on: [push]
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
+    name: Build
+    runs-on: ubuntu-18.04
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node_version: [10, 12]
 
     steps:
     - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js ${{ matrix.node_version }}
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
+        version: ${{ matrix.node_version }}
+
+    - name: yarn install, yarn lint, yarn test, yarn build
       run: |
-        npm ci
-        npm run test
-      env:
-        CI: true
+        yarn install
+        yarn test
