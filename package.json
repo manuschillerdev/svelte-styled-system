@@ -1,6 +1,6 @@
 {
   "name": "svelte-styled-system",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Using the idea of styled-system with svelte",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -15,8 +15,10 @@
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
+    "clean": "rm -rf dist",
     "build": "microbundle",
     "bundlesize": "bundlesize",
+    "prepublish": "test && clean && build && bundlesize",
     "test": "ava src/test.js"
   },
   "bundlesize": [
