@@ -5,6 +5,8 @@ import { shortHandAttributes } from "./constants";
 const themeGet = (theme, pathOrValue) =>
   pathOrValue ? dlv(theme, pathOrValue, pathOrValue) : pathOrValue;
 
+// just a really basic shallow compare on $$props
+// probably missing edge cases
 const attributesEq = (a = {}, b = {}) => {
   for (let key in a) if (!(key in b) || a[key] !== b[key]) return false;
   for (let key in b) if (!(key in a)) return false;
@@ -81,4 +83,4 @@ const styled = (node, props) => {
   return { update };
 };
 
-export { css, createCssText, themeGet, styled };
+export { css, createCssText, themeGet, styled, attributesEq };
