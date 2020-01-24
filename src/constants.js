@@ -17,7 +17,6 @@ const shd = "shadow";
 const grid = "grid";
 const ap = "ap";
 const gap = `g${ap}`;
-const Gap = `G${ap}`;
 const row = "row";
 const col = "col";
 const color = `${col}or`;
@@ -91,10 +90,10 @@ export const shortHandAttributes = new Map([
   [direction, [`${flex}-${direction}`]],
   [gap, [`${grid}-${gap}`]],
   [`${row}`, [`${grid}-${row}`]],
-  [`${row}${Gap}`, [`${grid}-${row}-${gap}`]],
+  [`${row}${gap}`, [`${grid}-${row}-${gap}`]],
   [`${row}-${gap}`, [`${grid}-${row}-${gap}`]],
   [`${column}`, [`${grid}-${col}`]],
-  [`${col}${Gap}`, [`${grid}-${column}-${gap}`]],
+  [`${col}${gap}`, [`${grid}-${column}-${gap}`]],
   [`${col}-${gap}`, [`${grid}-${column}-${gap}`]],
   [`${area}`, [`${grid}-${area}`]],
   [`${auto}${flow}`, [`${grid}-${auto}-${flow}`]],
@@ -105,8 +104,8 @@ export const shortHandAttributes = new Map([
   [`${auto}-${column}s`, [`${grid}-${auto}-${column}s`]],
   [`${template}${row}s`, [`${grid}-${template}-${row}s`]],
   [`${template}-${row}s`, [`${grid}-${template}-${row}s`]],
-  [`${template}${column}s`, [`${grid}-${template}-${col}s`]],
-  [`${template}-${column}s`, [`${grid}-${template}-${col}s`]],
+  [`${template}${column}s`, [`${grid}-${template}-${column}s`]],
+  [`${template}-${column}s`, [`${grid}-${template}-${column}s`]],
   [`${template}${area}s`, [`${grid}-${area}-${area}s`]],
   [`${template}-${area}s`, [`${grid}-${area}-${area}s`]]
 ]);

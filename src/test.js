@@ -1,5 +1,6 @@
-const assert = require("assert");
-import { themeGet, styled } from ".";
+const test = require("ava");
+import { themeGet, createCssText, styled, attributesEq } from "./index";
+import { shortHandAttributes } from "./constants";
 
 const theme = {
   color: {
@@ -8,30 +9,6 @@ const theme = {
   scale: ["0", "0.5rem", "1rem"]
 };
 
-function check(path, value) {
-  const out = themeGet(theme, path);
-  assert.strictEqual(
-    out,
-    value,
-    `themeGet(obj, "${path}") should be ${value}, got ${out}`
-  );
-  console.log(` ✓ themeGet(theme, "${path}) resolved to "${value}""`);
-}
-
-// themeGet
-// object notation
-check("color.primary", "dodgerblue");
-// array notation
-check("scale.0", "0");
-check("scale.1", "0.5rem");
-check("scale.2", "1rem");
-// return raw value as fallback
-check("center", "center");
-check(undefined, "");
-check(null, "");
-
-// styled
-// todo: add better tests that really test the css output!
 class HTMLNode {
   constructor() {
     this.class = "";
@@ -46,20 +23,73 @@ class HTMLNode {
   }
 }
 
-const props = { color: "color.primary" };
-const node = new HTMLNode();
-const result = styled(node, [props, theme]);
-assert(node.class.includes("go"));
-let previousClassName = node.class;
+// named aliases for array values
+theme.scale.s = theme.scale[0];
 
-// update with different props leads to new classname
-result.update([{ color: "color.secondary" }, theme]);
-assert(node.class.includes("go"));
-assert(!node.class.includes(previousClassName));
+test("themeGet: should resolve paths to theme values via themeGet", t => {
+  t.is(themeGet(theme, "color.primary"), theme.color.primary); // object path
+  t.is(themeGet(theme, "scale.0"), theme.scale[0]); // array notation
+  t.is(themeGet(theme, "scale.s"), theme.scale[0]); // alias
+  t.is(
+    themeGet(theme, "return.unknown.path.unchanged"),
+    "return.unknown.path.unchanged"
+  ); // return others unchanged
+});
 
-// update with the same props leads to an identical
-// classname name because update was skipped completely
-previousClassName = node.class;
-result.update([{ color: "color.secondary" }, theme]);
-assert(node.class.includes("go"));
-assert(node.class === previousClassName);
+test("createCssText: should resolve pseudo selectors via _", t => {
+  t.is(
+    createCssText({ _hover: { color: "red" } }, theme),
+    "&:hover { color:red; }"
+  );
+  t.is(
+    createCssText({ _hover: { color: "red" } }, theme),
+    "&:hover { color:red; }"
+  );
+  t.is(
+    createCssText({ _after: { color: "red" } }, theme),
+    "&:after { color:red; }"
+  );
+  t.is(
+    createCssText({ _before: { color: "red" } }, theme),
+    "&:before { color:red; }"
+  );
+});
+
+test("createCssText: should resolve shorthand properties to regular css properties", t => {
+  for (const [key, value] of shortHandAttributes.entries()) {
+    const expectedOutput = value.map(property => `${property}:value;`).join("");
+    t.is(createCssText({ [key]: "value" }, theme), expectedOutput);
+  }
+});
+
+test("styled: should create classNames and update the node with it", t => {
+  const props = { color: "color.primary" };
+  const node = new HTMLNode();
+  const result = styled(node, [props, theme]);
+  t.is(node.class.includes("go"), true);
+
+  let previousClassName = node.class;
+  // update with different props leads to new classname
+  result.update([{ color: "color.secondary" }, theme]);
+  t.is(node.class.includes("go"), true);
+  t.is(node.class.includes(previousClassName), false);
+});
+
+test("attributesEq: should diff two objects", t => {
+  const obj1 = { foo: "bar" };
+  const obj2 = { foo: "bar" };
+
+  t.truthy(attributesEq(obj1, obj2));
+
+  obj1.baz = 1;
+  t.falsy(attributesEq(obj1, obj2));
+
+  obj2.baz = 1;
+  t.truthy(attributesEq(obj1, obj2));
+
+  delete obj1.foo;
+  t.falsy(attributesEq(obj1, obj2));
+
+  obj1.foo = "baz";
+  t.falsy(attributesEq(obj1, obj2));
+});
