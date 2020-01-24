@@ -4,8 +4,6 @@
 
 Let's create our first `Box` that is completely styled based on our theme definition!
 
-First we start by defining some example values for our theme.
-
 ```jsx
 // theme.js
 import { writable } from "svelte/store";
