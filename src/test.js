@@ -1,5 +1,5 @@
 const test = require("ava");
-import { themeGet, createCssText, styled, attributesEq } from "./index";
+import { themeGet, createCssText, styled } from "./index";
 import { shortHandAttributes } from "./constants";
 
 const theme = {
@@ -73,23 +73,4 @@ test("styled: should create classNames and update the node with it", t => {
   result.update([{ color: "color.secondary" }, theme]);
   t.is(node.class.includes("go"), true);
   t.is(node.class.includes(previousClassName), false);
-});
-
-test("attributesEq: should diff two objects", t => {
-  const obj1 = { foo: "bar" };
-  const obj2 = { foo: "bar" };
-
-  t.truthy(attributesEq(obj1, obj2));
-
-  obj1.baz = 1;
-  t.falsy(attributesEq(obj1, obj2));
-
-  obj2.baz = 1;
-  t.truthy(attributesEq(obj1, obj2));
-
-  delete obj1.foo;
-  t.falsy(attributesEq(obj1, obj2));
-
-  obj1.foo = "baz";
-  t.falsy(attributesEq(obj1, obj2));
 });
