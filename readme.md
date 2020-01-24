@@ -5,7 +5,7 @@
 POC for bringing the principles of [https://styled-system.com/](https://styled-system.com/) to svelte.
 
 This is for demo purposes only and not meant to be used yet!
-May change / be abondend any time.
+May change / be abandoned any time.
 
 Demo: [https://svelte.dev/repl/fd2a1151c14c4c2685ee55f661665204?version=3.17.1](https://svelte.dev/repl/fd2a1151c14c4c2685ee55f661665204?version=3.17.1)
 
@@ -22,7 +22,7 @@ Demo: [https://svelte.dev/repl/fd2a1151c14c4c2685ee55f661665204?version=3.17.1](
 
 ### Defining your theme:
 
-The theme definition is nothing more than a plain JS-Object wrapped in a writable store, that should contain an attribute `breakpoints: string[]` at the top level as a minimum config if you want to use responsive attributes.
+The theme definition is nothing more than a plain JS-Object wrapped in a writable store, that should contain an attribute `breakpoints: string[]` at the top level as a minimum config (if you want to use responsive attributes).
 
 Besides that you can define all of your design variables just as you like.
 
@@ -55,12 +55,12 @@ Using your theme is pretty straight forward, too. `styled` from `svelte-styled-s
 ```jsx
 // Box.svelte
 <script>
-	import { styled } from 'svelte-styled-system';
-	import { theme } from './theme.js';
+  import { styled } from 'svelte-styled-system';
+  import { theme } from './theme.js';
 </script>
 
 <div use:styled={[$$props, $theme]}>
-	<slot></slot>
+  <slot></slot>
 </div>
 ```
 
@@ -69,16 +69,16 @@ That's all! Your are ready to use all css property names + [shorthand](#currentl
 ```jsx
 // App.svelte
 <script>
-	import Box from './Box.svelte';
+  import Box from './Box.svelte';
 </script>
 
 <Box
-	p={["space.s", "space.m", "space.l"]}
-	bg="color.primary" color="color.secondary"
-	textAlign="center"
+  p={["space.s", "space.m", "space.l"]}
+  bg="color.primary" color="color.secondary"
+  textAlign="center"
 >
-	<h3>Using styled-system in svelte!</h3>
-	<p>Resize me to see my responsive padding in action</p>
+  <h3>Using styled-system in svelte!</h3>
+  <p>Resize me to see my responsive padding in action</p>
 </Box>
 ```
 
@@ -91,13 +91,13 @@ That's all! Your are ready to use all css property names + [shorthand](#currentl
 
 ```jsx
 {
-	color: {
-		primary: "dodgerblue", // path: color.primary
-	},
-	// path: scale.0 => 0
-	// path: scale.1 => 0.5rem
-	// path: scale.2 => 1rem
-	scale: ["0", "0.5rem", "1rem"]
+  color: {
+    primary: "dodgerblue", // path: color.primary
+  },
+  // path: scale.0 => 0
+  // path: scale.1 => 0.5rem
+  // path: scale.2 => 1rem
+  scale: ["0", "0.5rem", "1rem"]
 }
 ```
 
@@ -115,23 +115,15 @@ For commonly used css properties there are shortcuts to make your code _even les
 **Example:**
 `my="space.m"` => `margin-top: 1rem; margin-bottom: 1rem;`
 
-As with all other properties you can use the responsive Array notation as well.
+As with all other properties you can use the responsive Array notation as well!
+A complete list of shorthand props is available in the (chakra-ui docs)[https://chakra-ui.com/style-props] or at (src/constants.js)[src/constants.js]
 
-| name | properties                  |
-| ---- | --------------------------- |
-| bg   | background-color            |
-| size | width, height               |
-| m    | margin                      |
-| my   | margin-top, margin-bottom   |
-| mx   | margin-left, margin-right   |
-| mt   | margin-top                  |
-| mr   | margin-right                |
-| mb   | margin-bottom               |
-| ml   | margin-left                 |
-| p    | padding                     |
-| py   | padding-top, padding-bottom |
-| px   | padding-left, padding-right |
-| pt   | padding-top                 |
-| pr   | padding-right               |
-| pb   | padding-bottom              |
-| pl   | padding-left                |
+**Note**: Shorthand path resolutions ("theme keys") are not supported yet. So you always have to specify the full object path:
+
+```jsx
+// react styled-system:
+<MyComponent bg="primary" />
+
+// svelte-styled-system:
+<MyComponent bg="color.primary" />
+```
