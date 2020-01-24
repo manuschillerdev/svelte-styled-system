@@ -15,10 +15,10 @@
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
+    "bundle": "microbundle",
     "clean": "rm -rf dist",
-    "build": "microbundle",
     "bundlesize": "bundlesize",
-    "prepublish": "test && clean && build && bundlesize",
+    "build": "yarn test && yarn clean && yarn microbundle && yarn bundlesize",
     "test": "ava src/test.js"
   },
   "bundlesize": [
