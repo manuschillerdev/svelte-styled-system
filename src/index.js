@@ -5,14 +5,6 @@ import { shortHandAttributes } from "./constants";
 const themeGet = (theme, pathOrValue) =>
   pathOrValue ? dlv(theme, pathOrValue, pathOrValue) : pathOrValue;
 
-// just a really basic shallow compare on $$props
-// probably missing edge cases
-const attributesEq = (a = {}, b = {}) => {
-  for (let key in a) if (!(key in b) || a[key] !== b[key]) return false;
-  for (let key in b) if (!(key in a)) return false;
-  return true;
-};
-
 const createCssText = (attributes, theme, pseudoElementSelector) => {
   let cssText = "";
   const mediaQueries = [];
@@ -61,17 +53,19 @@ const createCssText = (attributes, theme, pseudoElementSelector) => {
 };
 
 const styled = (node, props) => {
-  let prevAttributes = {};
+  let previousCssText = "";
   let prevClassName;
 
   const update = ([attributes, theme]) => {
-    // equal props will always produce equal css text / classes
-    if (attributesEq(attributes, prevAttributes)) return;
-    prevAttributes = attributes;
+    const cssText = createCssText(attributes, theme);
+
+    // skip unnecessary updates
+    if (cssText === previousCssText) return;
+    previousCssText = cssText;
 
     // appends the current styles to the document head
     // see goober documentation for details
-    const cn = css(createCssText(attributes, theme));
+    const cn = css(cssText);
     node.classList.add(cn);
 
     if (prevClassName) node.classList.remove(prevClassName);
@@ -83,4 +77,4 @@ const styled = (node, props) => {
   return { update };
 };
 
-export { css, createCssText, themeGet, styled, attributesEq };
+export { css, createCssText, themeGet, styled };
